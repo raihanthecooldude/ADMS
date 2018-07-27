@@ -1,0 +1,20 @@
+1.
+
+declare
+
+e_no emp.empno%type:= :employee_number;
+e_name emp.ename%type;
+e_hiredate emp.hiredate%type;
+e_job emp.job%type;
+
+begin
+
+select ename, hiredate, job into e_name, e_hiredate, e_job from emp where empno=e_no;
+dbms_output.put_line('Name: '||e_name);
+dbms_output.put_line('Join Date: '||e_hiredate);
+dbms_output.put_line('Designation: '||e_job);
+
+end;
+
+2.
+

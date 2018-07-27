@@ -1,0 +1,5 @@
+1. select * from emp where ename like 'A%'
+2. select * from emp where ename like 'B%E'
+3. select * from emp where ename like '_L%K_'
+4. select * from emp where (ename not like 'A%' and ename not like 'S%')  and job='MANAGER'
+5. select * from emp where ename like 'S%' and job like 'S%'

@@ -1,0 +1,15 @@
+select e.empno, e.ename, d.* from emp e, dept d where e.deptno=d.deptno and (e.job='MANAGER' or e.job='CLERK') and (d.dname='RESEARCH' or d.dname='ACCOUNTING')
+
+select e.ename, e.job, d.dname, d.loc from emp e, dept d where e.deptno=d.deptno and d.loc!='DALLAS'
+
+select e.ename, d.dname, d.loc from emp e, dept d where e.deptno=d.deptno and e.mgr = (select empno from emp where ename='CLARK')
+
+select dept.* from dept where deptno in (select deptno from emp where empno in (select mgr from emp))
+
+select emp.*, dept.dname, dept.loc from emp, dept where emp.deptno=dept.deptno and dept.loc='DALLAS'
+
+select emp.empno, emp.ename, emp.sal, dept.dname, dept.loc from emp, dept where emp.deptno=dept.deptno and sal= (select max(sal) from emp, dept where emp.deptno=dept.deptno and dept.dname='SALES')
+
+select emp.*, dept.dname, dept.loc from emp, dept where emp.deptno=dept.deptno and (job = (select job from emp where ename='MILLER') or sal > (select sal from emp where ename='ALLEN'))
+
+select emp.*, dept.dname, dept.loc from emp, dept where emp.deptno=dept.deptno and dept.loc in ('CHICAGO', 'DALLAS')

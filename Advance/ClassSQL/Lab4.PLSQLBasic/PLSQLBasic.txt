@@ -1,0 +1,13 @@
+declare
+
+e_no emp.empno%type:=:employee_number;
+e_sal emp.sal%type;
+
+begin
+
+if e_no>0 then 
+select sal into e_sal from emp where empno=e_no;
+dbms_output.put_line(e_sal);
+end if;
+end;
+

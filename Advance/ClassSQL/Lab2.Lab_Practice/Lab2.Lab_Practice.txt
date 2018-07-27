@@ -1,0 +1,28 @@
+1. select emp.*, dept.dname, dept.loc from emp, dept where emp.deptno=dept.deptno and dept.loc in ('CHICAGO', 'DALLAS')
+
+2. select emp.* from emp, salgrade where (emp.sal between salgrade.losal and salgrade.hisal) and (salgrade.grade=2 or salgrade.grade=3)
+
+3. select emp.* from emp, salgrade where (emp.sal between salgrade.losal and salgrade.hisal) and (salgrade.grade=4 or salgrade.grade=5) and (emp.job in ('ANALYST', 'MANAGER'))
+
+4. select e.* from emp e, emp a where e.job=a.job and a.ename='ALLEN'
+
+5. select e.* from emp e, emp m where e.mgr=m.empno and e.hiredate < m.hiredate
+
+6.select emp.*, dept.dname, dept.loc from emp, dept where emp.deptno=dept.deptno and (emp.job=(select job from emp where ename='MILLER') or emp.sal>(select sal from emp where ename='ALLEN'))
+
+7. select * from emp where sal=(select max(sal) from emp, dept where emp.deptno=dept.deptno and dept.dname='SALES')
+
+8. select emp.* from emp, dept where emp.deptno=dept.deptno and dept.loc!='DALLAS' and comm in (select comm from emp)
+
+9. select dname from dept where deptno in (select deptno from emp group by deptno having count(*) >= 3)
+
+10. select d.dname, d.loc from emp e, emp k, dept d where e.deptno=d.deptno and e.mgr=k.empno and k.ename='KING'
+
+11. 
+
+12. select ename, hiredate, deptno from emp where deptno=(select deptno from emp where ename='BLAKE') and ename!='BLAKE'
+
+13. select ename, deptno, sal from emp where deptno in (select deptno from emp where comm in (select comm from emp)) and sal in (select sal from emp where comm in (select comm from emp))	||	select * from emp where (deptno,sal) in (select deptno,sal from emp where comm is not null)
+
+14. 
+
